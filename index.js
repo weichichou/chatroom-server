@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const {db} = require('./db')
+const userRouter = require('./router/userRouter')
 
 const app = express()
 const corsMiddleware = cors()
@@ -10,6 +11,7 @@ const port = 4000
 app
     .use(corsMiddleware)
     .use(bodyParser.json())
+    .use(userRouter)
     .listen(port, () => console.log(`Listengin on port ${port}`))
 
 db

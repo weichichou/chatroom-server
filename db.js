@@ -4,9 +4,19 @@ const db = new Sequelize(databaseUrl)
 
 class User extends Model {}
 User.init({
-    username: DataTypes.STRING,
-    email: DataTypes.TEXT,
-    password: DataTypes.STRING
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        unique: true
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 },{sequelize: db, modelName: 'chatroom-user'});
 
 module.exports = { db, User }
