@@ -7,6 +7,6 @@ User.init({
     username: DataTypes.STRING,
     email: DataTypes.TEXT,
     password: DataTypes.STRING
-},{sequelize: db, modelName: 'user'});
+},{sequelize: db, modelName: 'chatroom-user'});
 
 module.exports = { db, User }
