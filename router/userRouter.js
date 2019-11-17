@@ -3,6 +3,7 @@ const {User} = require('../db')
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 const router = new Router()
+const auth = require('../authMiddleware')
 
 router.post('/signup', (req, res, next) => {
     if (!req.body.username || !req.body.email || !req.body.password){
@@ -20,6 +21,11 @@ router.post('/signup', (req, res, next) => {
             res.status(409).send()
             next(err)
         })
+})
+
+// For login test
+router.get('/secret', auth, (req, res, next) => {
+    res.send('My secret is ABC')
 })
 
 module.exports = router
